@@ -55,7 +55,13 @@ while True:
     elif secim == "2":
         imlec.execute("SELECT notsayisi FROM notlar")
         cikti = imlec.fetchall()
-        notsayisi = int(cikti[-1][0])+1
+        # notsayisi = int(cikti[-1][0])+1
+        try:
+            notsayisi = int(cikti[-1][0]) + 1
+        except IndexError:
+            notsayisi = 1
+
+
         eklenecek_not_ismi= input("Notun ismi?")
         eklenecek_not= input("Notunuz?")
         zaman = time.localtime()
